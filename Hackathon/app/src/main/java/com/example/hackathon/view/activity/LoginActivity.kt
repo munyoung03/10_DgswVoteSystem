@@ -24,6 +24,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         with(viewModel){
             loginBtn.observe(this@LoginActivity, Observer {
                 login()
+                getFeed()
             })
             status.observe(this@LoginActivity, Observer {
                 if(status.value == "200")

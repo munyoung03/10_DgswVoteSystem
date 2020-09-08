@@ -1,11 +1,9 @@
 package com.example.hackathon.network
 
-import com.example.hackathon.model.LoginBody
-import com.example.hackathon.model.LoginData
-import com.example.hackathon.model.SignUpBody
-import com.example.hackathon.model.SignUpData
+import com.example.hackathon.model.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Service {
@@ -19,4 +17,7 @@ interface Service {
     fun signUp(
         @Body signUpBody: SignUpBody
     ) : Call<SignUpData>
+
+    @GET("vote/feed")
+    fun getFeed() : Call<GetSubJect>
 }

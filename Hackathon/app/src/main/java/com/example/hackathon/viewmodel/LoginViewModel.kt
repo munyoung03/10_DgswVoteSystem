@@ -2,11 +2,9 @@ package com.example.hackathon.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.hackathon.adapter.MainAdapter
 import com.example.hackathon.base.BaseViewModel
-import com.example.hackathon.model.LoginBody
-import com.example.hackathon.model.LoginData
-import com.example.hackathon.model.SignUpBody
-import com.example.hackathon.model.SignUpData
+import com.example.hackathon.model.*
 import com.example.hackathon.network.Service
 import com.example.hackathon.widget.MyApplication
 import com.example.hackathon.widget.SingleLiveEvent
@@ -21,9 +19,32 @@ class LoginViewModel : BaseViewModel() {
     val password = MutableLiveData<String>()
     var status = MutableLiveData<String>()
     val loginBtn = SingleLiveEvent<Unit>()
+    val subJectList = ArrayList<String>()
+    val pkList = ArrayList<Int>()
+    var i = 0
 
     lateinit var myAPI: Service
     lateinit var retrofit: Retrofit
+
+    fun getFeed(){
+        myAPI = retrofit.create(Service::class.java)
+        myAPI.getFeed().enqueue(object : Callback<GetSubJect>{
+            override fun onResponse(call: Call<GetSubJect>, response: Response<GetSubJect>) {
+                val count = response.body()?.list?.get(0)?.pk
+
+                for(i in i..count!!) {
+                    subJectList.add(response.body()?.list?.get(i)?.subject.toString())
+                    pkList.add(response.body()?.list?.get(i)?.pk!!)
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<GetSubJect>, t: Throwable) {
+            }
+
+        })
+    }
 
     fun login(){
         myAPI = retrofit.create(Service::class.java)
