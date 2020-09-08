@@ -3,4 +3,6 @@
     <string name="title_survey">survey</string>
     <string name="title_search">search</string>
     <string name="title_write">write</string>
+    <string name="title_notification">notification</string>
+    <string name="title_profile">profile</string>
 </resources>
