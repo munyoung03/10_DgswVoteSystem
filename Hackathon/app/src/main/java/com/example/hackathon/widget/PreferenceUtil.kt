@@ -47,22 +47,12 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
-    fun setCheckPermission(key: String, bol: Boolean)
-    {
-        prefs.edit().putBoolean(key, bol).apply()
-    }
-
-    fun getCheckPermission(key: String, defValue: Boolean): Boolean
-    {
-        return prefs.getBoolean(key, defValue)
-    }
-
-    fun getBirth(key: String, defValue: String): String
+    fun getIdentity(key: String, defValue: String): String
     {
         return prefs.getString(key, defValue).toString()
     }
 
-    fun setBirth(key: String, str: String?)
+    fun setIdentity(key: String, str: String?)
     {
         prefs.edit().putString(key, str).apply()
     }
