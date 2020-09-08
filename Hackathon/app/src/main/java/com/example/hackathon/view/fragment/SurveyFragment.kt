@@ -19,18 +19,18 @@ class SurveyFragment : BaseFragment<FragmentSurveyBinding, SurveyViewModel>() {
 
     override fun init() {
 
-        var i = 0
-        var maxCount = MyApplication.prefs.getMaxPk("maxpk", 5)
-        var subJectArrayList = ArrayList<String>()
-        var pkArrayList = ArrayList<Int>()
+        val i = 0
+        val maxCount = MyApplication.prefs.getMaxPk("maxpk", 5)
+        val subJectArrayList = ArrayList<String>()
+        val pkArrayList = ArrayList<Int>()
 
         for(i in i..maxCount) {
             subJectArrayList.add(MyApplication.prefs.getSubJect("subJect_${i}", ""))
             pkArrayList.add(MyApplication.prefs.getPk("Pk_${i}", 0))
         }
 
-        var subJectList : ArrayList<SubJectData> = arrayListOf(
-            SubJectData(subJectArrayList,pkArrayList )
+        val subJectList : ArrayList<SubJectData> = arrayListOf(
+            SubJectData(subJectArrayList, pkArrayList)
         )
 
         val mAdapter = MainAdapter(subJectList)
