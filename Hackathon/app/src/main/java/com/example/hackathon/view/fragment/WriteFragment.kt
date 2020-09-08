@@ -13,6 +13,8 @@ import com.example.hackathon.base.BaseFragment
 import com.example.hackathon.databinding.FragmentWriteBinding
 import com.example.hackathon.viewmodel.SearchViewModel
 import com.example.hackathon.viewmodel.WriteViewModel
+import com.example.hackathon.widget.extension.toast
+import kotlinx.android.synthetic.main.fragment_write.*
 
 class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
 
@@ -25,6 +27,15 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
     }
 
     override fun observerViewModel() {
+        with(viewModel){
+            checkMax.observe(this@WriteFragment, Observer {
+                toast("투표 보기는 5개가 최대입니다.")
+            })
+
+            plusBtn.observe(this@WriteFragment, Observer {
+                plusView()
+            })
+        }
     }
 
 }

@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="370dp"
             android:layout_height="308dp"
             app:layout_constraintBottom_toTopOf="@+id/button2"
@@ -62,7 +62,8 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{()->viewModel.plusBtnClick()}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
