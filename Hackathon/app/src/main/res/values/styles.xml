@@ -1,24 +1,18 @@
 <resources>
-    <style name="AppBaseTheme" parent="Theme.AppCompat">
-
-        <item name="android:actionBarStyle">@style/AppTheme</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme"  parent="Theme.AppCompat.Light">
-        <item name="windowActionBar">true</item>
-
-        <item name="android:windowActionBarOverlay">true</item>
-        <!-- colorPrimary is used for the default action bar background -->
-        <item name="android:background">@color/colorWhite</item>
-
-        <item name="actionBarStyle">@color/colorBlack</item>
-
-        <item name="android:textColorPrimary">@color/colorPrimary</item>
-        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
-        <item name="actionMenuTextColor">@color/colorAccent</item>
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/colorWhite</item>
+        <item name="titleTextStyle">@style/MyActionBarTitle</item>
     </style>
-
-
+    <style name="MyActionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
 
 </resources>
