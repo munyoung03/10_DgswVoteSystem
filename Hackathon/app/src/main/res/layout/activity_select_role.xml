@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.hackathon.view.fragment.SelectRoleViewModel" />
+            type="com.example.hackathon.viewmodel.SelectRoleViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -15,7 +15,7 @@ interface Service {
         @Body loginBody: LoginBody
     ) : Call<LoginData>
 
-    @POST("auth/register")
+    @POST("auth/signUp")
     fun signUp(
         @Body signUpBody: SignUpBody
     ) : Call<SignUpData>
