@@ -1,5 +1,6 @@
 package com.example.hackathon.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
 import com.example.hackathon.model.GetSubJect
 import com.example.hackathon.model.SubJectData
+import com.example.hackathon.view.activity.ContentActivity
 import com.example.hackathon.widget.MyApplication
 
 class MainAdapter(val subJectList: ArrayList<SubJectData>) : RecyclerView.Adapter<MainAdapter.Holder>() {
@@ -29,9 +31,15 @@ class MainAdapter(val subJectList: ArrayList<SubJectData>) : RecyclerView.Adapte
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val subjectText = itemView.findViewById<TextView>(R.id.subject)
         fun bind(subject : SubJectData) {
+            subjectText.text = subject.SubJect.toString()
+
             itemView.setOnClickListener {
-                subjectText.text = MyApplication.prefs.getSubJect("subject_1", "안녕")
-                subject.pk.add(MyApplication.prefs.getPk("pk", 0))
+                var position = layoutPosition
+
+                val i = Intent(itemView.context, ContentActivity::class.java)
+                i.putExtra("pk", position)
+
+                itemView.context.startActivity(i)
             }
         }
     }
