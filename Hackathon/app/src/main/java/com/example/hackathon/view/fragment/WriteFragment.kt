@@ -19,7 +19,7 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
     override val viewModel: WriteViewModel = WriteViewModel()
 
     override val layoutRes: Int
-        get() = R.layout.fragment_survey
+        get() = R.layout.fragment_write
 
     override fun init() {
     }

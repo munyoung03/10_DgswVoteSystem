@@ -11,7 +11,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     override val viewModel: ProfileViewModel = ProfileViewModel()
 
     override val layoutRes: Int
-        get() = R.layout.fragment_survey
+        get() = R.layout.fragment_profile
 
     override fun init() {
     }

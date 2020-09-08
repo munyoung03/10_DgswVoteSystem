@@ -11,7 +11,7 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding, Notificat
     override val viewModel: NotificationViewModel = NotificationViewModel()
 
     override val layoutRes: Int
-        get() = R.layout.fragment_survey
+        get() = R.layout.fragment_notification
 
     override fun init() {
     }
