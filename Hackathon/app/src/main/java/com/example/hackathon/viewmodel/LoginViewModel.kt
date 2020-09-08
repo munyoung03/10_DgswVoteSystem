@@ -19,8 +19,8 @@ class LoginViewModel : BaseViewModel() {
     val password = MutableLiveData<String>()
     var status = MutableLiveData<String>()
     val loginBtn = SingleLiveEvent<Unit>()
-    val subJectList = ArrayList<String>()
-    val pkList = ArrayList<Int>()
+    val loginCheck = MutableLiveData<Boolean>()
+
     var i = 0
 
     lateinit var myAPI: Service
@@ -28,14 +28,18 @@ class LoginViewModel : BaseViewModel() {
 
     fun getFeed(){
         myAPI = retrofit.create(Service::class.java)
-        myAPI.getFeed().enqueue(object : Callback<GetSubJect>{
+        myAPI.getFeed(token = MyApplication.prefs.getToken("token", "fuck")).enqueue(object : Callback<GetSubJect>{
             override fun onResponse(call: Call<GetSubJect>, response: Response<GetSubJect>) {
                 val count = response.body()?.list?.get(0)?.pk
 
+                MyApplication.prefs.setMaxPk("maxpk", count!!)
+
                 for(i in i..count!!) {
-                    subJectList.add(response.body()?.list?.get(i)?.subject.toString())
-                    pkList.add(response.body()?.list?.get(i)?.pk!!)
+                    MyApplication.prefs.setSubJect("subJect_${i}", response.body()?.list?.get(i)?.subject.toString())
+                    MyApplication.prefs.setPk("Pk_${i}", response.body()?.list?.get(i)?.pk!!)
                 }
+
+                loginCheck.value = true
 
 
             }

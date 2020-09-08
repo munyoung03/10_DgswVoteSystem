@@ -1,11 +1,11 @@
 package com.example.hackathon.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.hackathon.adapter.MainAdapter
 import com.example.hackathon.base.BaseViewModel
+import com.example.hackathon.model.GetSubJect
+import com.example.hackathon.model.SubJectData
+import com.example.hackathon.widget.MyApplication
 
 class SurveyViewModel : BaseViewModel() {
-
 
 }

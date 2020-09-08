@@ -4,6 +4,7 @@ import com.example.hackathon.model.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface Service {
@@ -19,5 +20,7 @@ interface Service {
     ) : Call<SignUpData>
 
     @GET("vote/feed")
-    fun getFeed() : Call<GetSubJect>
+    fun getFeed(
+        @Header("token") token: String
+    ) : Call<GetSubJect>
 }
