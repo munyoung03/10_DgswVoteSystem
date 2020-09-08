@@ -57,6 +57,33 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
-    fun setSubJectList(key: String, arrayList: ArrayList)
+    fun getSubJect(key: String, defValue: String): String
+    {
+        return prefs.getString(key, defValue).toString()
+    }
 
+    fun setSubJect(key: String, str: String?)
+    {
+        prefs.edit().putString(key, str).apply()
+    }
+
+    fun getPk(key: String, defValue: Int): Int
+    {
+        return prefs.getInt(key, defValue)
+    }
+
+    fun setPk(key: String, int: Int)
+    {
+        prefs.edit().putInt(key, int).apply()
+    }
+
+    fun getMaxPk(key: String, defValue: Int): Int
+    {
+        return prefs.getInt(key, defValue)
+    }
+
+    fun setMaxPk(key: String, int: Int)
+    {
+        prefs.edit().putInt(key, int).apply()
+    }
 }
