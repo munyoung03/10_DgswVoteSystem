@@ -1,4 +1,4 @@
-package com.example.hackathon.view.fragment
+package com.example.hackathon.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -33,11 +33,14 @@ class SelectRoleViewModel : BaseViewModel(){
             identity = identity.value.toString()))
             .enqueue(object : Callback<SignUpData> {
             override fun onFailure(call: Call<SignUpData>, t: Throwable) {
-
+                Log.d("LOG", "t : ${t.message.toString()}")
             }
 
             override fun onResponse(call: Call<SignUpData>, response: Response<SignUpData>) {
                 status.value = response.code().toString()
+                Log.d("LOG", response.errorBody()?.string().toString())
+                Log.d("LOG", response.message())
+                Log.d("LOG", status.value.toString())
             }
         })
     }

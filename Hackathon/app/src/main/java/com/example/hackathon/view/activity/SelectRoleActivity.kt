@@ -5,8 +5,7 @@ import com.example.hackathon.R
 import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.databinding.ActivitySelectRoleBinding
 import com.example.hackathon.network.RetrofitClient
-import com.example.hackathon.view.fragment.SelectRoleViewModel
-import com.example.hackathon.viewmodel.LoginViewModel
+import com.example.hackathon.viewmodel.SelectRoleViewModel
 import com.example.hackathon.widget.MyApplication
 import com.example.hackathon.widget.extension.startActivity
 import com.example.hackathon.widget.extension.toast
