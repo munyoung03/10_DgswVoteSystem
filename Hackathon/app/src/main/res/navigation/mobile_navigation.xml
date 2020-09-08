@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_survey">
+
+    <fragment
+        android:id="@+id/navigation_survey"
+        android:name="com.example.hackathon.view.fragment.SurveyFragment"
+        android:label="@string/title_survey"
+        tools:layout="@layout/fragment_survey" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.hackathon.view.fragment.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_write"
+        android:name="com.example.hackathon.view.fragment.WriteFragment"
+        android:label="@string/title_write"
+        tools:layout="@layout/fragment_write" />
+</navigation>
