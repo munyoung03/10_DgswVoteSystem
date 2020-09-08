@@ -7,4 +7,6 @@ import com.example.hackathon.base.BaseViewModel
 
 class WriteViewModel : BaseViewModel() {
 
+
+
 }
