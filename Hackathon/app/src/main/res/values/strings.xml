@@ -8,4 +8,6 @@
     <string name="VoteTitle">투표 제목</string>
     <string name="add">+</string>
     <string name="upload">업로드</string>
+    <string name="minus">-</string>
+    <string name="content">내용</string>
 </resources>
