@@ -5,10 +5,8 @@ import com.example.hackathon.R
 import com.example.hackathon.adapter.MainAdapter
 import com.example.hackathon.base.BaseFragment
 import com.example.hackathon.databinding.FragmentSurveyBinding
-import com.example.hackathon.model.SubJectData
 import com.example.hackathon.network.RetrofitClient
 import com.example.hackathon.viewmodel.SurveyViewModel
-import com.example.hackathon.widget.MyApplication
 import kotlinx.android.synthetic.main.fragment_survey.*
 
 
