@@ -21,6 +21,7 @@
             android:ems="12"
             android:fontFamily="@font/nixgon_font"
             android:hint="@string/VoteTitle"
+            android:text="@={viewModel.editText}"
             android:inputType="text"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +49,7 @@
             android:text="@string/upload"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:onClick="@{()->viewModel.uploadBtnClick}"
+            android:onClick="@{()->viewModel.uploadBtnClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

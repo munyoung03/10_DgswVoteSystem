@@ -36,7 +36,7 @@ class SelectRoleActivity : BaseActivity<ActivitySelectRoleBinding, SelectRoleVie
             })
 
             status.observe(this@SelectRoleActivity, Observer {
-                if(status.value == "200")
+                if(status.value == "201")
                 {
                     MyApplication.prefs.setIdentity("identity", identity.value)
                     toast("회원가입 성공")
