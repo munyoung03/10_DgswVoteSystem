@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
 import com.example.hackathon.model.GetSubJect
-import com.example.hackathon.model.SubJectData
 import com.example.hackathon.view.activity.ContentActivity
-import com.example.hackathon.widget.MyApplication
 
 class MainAdapter(val subJectList: ArrayList<GetSubJect>) : RecyclerView.Adapter<MainAdapter.Holder>() {
 
@@ -39,7 +37,7 @@ class MainAdapter(val subJectList: ArrayList<GetSubJect>) : RecyclerView.Adapter
                 val position = layoutPosition
 
                 val i = Intent(itemView.context, ContentActivity::class.java)
-                i.putExtra("pk", position)
+                i.putExtra("pk", position+1)
 
                 itemView.context.startActivity(i)
             }

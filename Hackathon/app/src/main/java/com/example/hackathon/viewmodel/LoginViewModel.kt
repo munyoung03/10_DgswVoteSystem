@@ -25,32 +25,6 @@ class LoginViewModel : BaseViewModel() {
     lateinit var myAPI: Service
     lateinit var retrofit: Retrofit
 
-    fun getFeed(){
-        myAPI = retrofit.create(Service::class.java)
-        myAPI.getFeed(token = "Token ${MyApplication.prefs.getToken("token", "fuck")}").enqueue(object : Callback<List<GetSubJect>>{
-            override fun onResponse(call: Call<List<GetSubJect>>, response: Response<List<GetSubJect>>) {
-
-                Log.d("LOG", response.code().toString())
-
-                val count = response.body()?.get(0)?.pk
-
-                Log.d("LOG", count.toString())
-
-                MyApplication.prefs.setMaxPk("maxpk", count!!)
-
-                for(i in i..(count-1)!!) {
-                    MyApplication.prefs.setSubJect("subJect_${i}", response.body()?.get(i)?.subject.toString())
-                    MyApplication.prefs.setPk("Pk_${i}", response.body()?.get(i)?.pk!!)
-                }
-            }
-
-            override fun onFailure(call: Call<List<GetSubJect>>, t: Throwable) {
-                Log.d("LOG", t.message.toString())
-            }
-
-        })
-    }
-
     fun login(){
         myAPI = retrofit.create(Service::class.java)
         myAPI.login(

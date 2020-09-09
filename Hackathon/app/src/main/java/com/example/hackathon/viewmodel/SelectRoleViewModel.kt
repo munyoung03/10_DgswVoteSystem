@@ -38,6 +38,7 @@ class SelectRoleViewModel : BaseViewModel(){
 
             override fun onResponse(call: Call<SignUpData>, response: Response<SignUpData>) {
                 status.value = response.code().toString()
+
                 Log.d("LOG", response.errorBody()?.string().toString())
                 Log.d("LOG", response.message())
                 Log.d("LOG", status.value.toString())
