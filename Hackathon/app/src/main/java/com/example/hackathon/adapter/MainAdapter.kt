@@ -12,7 +12,9 @@ import com.example.hackathon.model.SubJectData
 import com.example.hackathon.view.activity.ContentActivity
 import com.example.hackathon.widget.MyApplication
 
-class MainAdapter(val subJectList: ArrayList<SubJectData>) : RecyclerView.Adapter<MainAdapter.Holder>() {
+class MainAdapter(val subJectList: ArrayList<GetSubJect>) : RecyclerView.Adapter<MainAdapter.Holder>() {
+
+    var count = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cardview, parent, false)
@@ -30,8 +32,8 @@ class MainAdapter(val subJectList: ArrayList<SubJectData>) : RecyclerView.Adapte
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val subjectText = itemView.findViewById<TextView>(R.id.subject)
-        fun bind(subject : SubJectData) {
-            subjectText.text = subject.SubJect.toString()
+        fun bind(subject : GetSubJect) {
+            subjectText.text = subject.subject
 
             itemView.setOnClickListener {
                 var position = layoutPosition

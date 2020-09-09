@@ -21,6 +21,6 @@ interface Service {
 
     @GET("vote/feed")
     fun getFeed(
-        @Header("token") token: String
-    ) : Call<GetSubJect>
+        @Header("Authorization") token: String
+    ) : Call<List<GetSubJect>>
 }

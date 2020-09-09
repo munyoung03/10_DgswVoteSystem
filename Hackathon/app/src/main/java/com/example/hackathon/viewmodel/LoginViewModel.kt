@@ -19,7 +19,6 @@ class LoginViewModel : BaseViewModel() {
     val password = MutableLiveData<String>()
     var status = MutableLiveData<String>()
     val loginBtn = SingleLiveEvent<Unit>()
-    val loginCheck = MutableLiveData<Boolean>()
 
     var i = 0
 
@@ -28,23 +27,25 @@ class LoginViewModel : BaseViewModel() {
 
     fun getFeed(){
         myAPI = retrofit.create(Service::class.java)
-        myAPI.getFeed(token = MyApplication.prefs.getToken("token", "fuck")).enqueue(object : Callback<GetSubJect>{
-            override fun onResponse(call: Call<GetSubJect>, response: Response<GetSubJect>) {
-                val count = response.body()?.list?.get(0)?.pk
+        myAPI.getFeed(token = "Token ${MyApplication.prefs.getToken("token", "fuck")}").enqueue(object : Callback<List<GetSubJect>>{
+            override fun onResponse(call: Call<List<GetSubJect>>, response: Response<List<GetSubJect>>) {
+
+                Log.d("LOG", response.code().toString())
+
+                val count = response.body()?.get(0)?.pk
+
+                Log.d("LOG", count.toString())
 
                 MyApplication.prefs.setMaxPk("maxpk", count!!)
 
-                for(i in i..count!!) {
-                    MyApplication.prefs.setSubJect("subJect_${i}", response.body()?.list?.get(i)?.subject.toString())
-                    MyApplication.prefs.setPk("Pk_${i}", response.body()?.list?.get(i)?.pk!!)
+                for(i in i..(count-1)!!) {
+                    MyApplication.prefs.setSubJect("subJect_${i}", response.body()?.get(i)?.subject.toString())
+                    MyApplication.prefs.setPk("Pk_${i}", response.body()?.get(i)?.pk!!)
                 }
-
-                loginCheck.value = true
-
-
             }
 
-            override fun onFailure(call: Call<GetSubJect>, t: Throwable) {
+            override fun onFailure(call: Call<List<GetSubJect>>, t: Throwable) {
+                Log.d("LOG", t.message.toString())
             }
 
         })
@@ -64,8 +65,8 @@ class LoginViewModel : BaseViewModel() {
                 override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
                     status.value = response.code().toString()
                     MyApplication.prefs.setToken("token", response.body()?.token.toString())
+                    Log.d("LOG", response.body()?.token.toString())
                     Log.d("LOG", status.value.toString())
-                    Log.d("LOG", response.errorBody()?.string().toString())
                 }
             })
     }
