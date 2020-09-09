@@ -10,4 +10,15 @@
     <string name="upload">업로드</string>
     <string name="minus">-</string>
     <string name="content">내용</string>
+    <string name="welcome">반갑습니다.</string>
+    <string name="projectTitle">VoteSystem</string>
+    <string name="be">입니다!</string>
+    <string name="login">로그인</string>
+    <string name="signUp">회원가입</string>
+    <string name="next">다음</string>
+    <string name="goodDay">좋은 하루 입니다.</string>
+    <string name="password">password</string>
+    <string name="email">Email</string>
+    <string name="name">양준혁\n 나는 양족발이다!</string>
+    <string name="vote">투표: 5</string>
 </resources>
