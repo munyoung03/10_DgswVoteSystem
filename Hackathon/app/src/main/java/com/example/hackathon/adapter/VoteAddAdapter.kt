@@ -1,4 +1,4 @@
-package com.example.hackathon.Adapter
+package com.example.hackathon.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
-import com.example.hackathon.model.ContentData
 import com.example.hackathon.model.VoteList
-import kotlinx.android.synthetic.main.votelist.view.*
 
 class VoteAddAdapter : RecyclerView.Adapter<VoteAddAdapter.Holder>() {
 
@@ -38,7 +36,6 @@ class VoteAddAdapter : RecyclerView.Adapter<VoteAddAdapter.Holder>() {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(arrayList[0])
-        ContentData.arrayList.add(position, holder.itemView.input_content.text.toString())
     }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){

@@ -1,10 +1,10 @@
 package com.example.hackathon.model
 
 data class PostBody (
-    val title: String,
-    val subject1: String,
-    val subject2: String,
-    val subject3: String,
-    val subject4: String,
-    val subject5: String
+    val subject: String,
+    val item1: String,
+    val item2: String,
+    val item3: String,
+    val item4: String,
+    val item5: String
 )

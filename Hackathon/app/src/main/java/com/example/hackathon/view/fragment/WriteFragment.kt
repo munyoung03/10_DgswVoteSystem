@@ -1,13 +1,16 @@
 package com.example.hackathon.view.fragment
 
 import android.util.Log
-import com.example.hackathon.Adapter.VoteAddAdapter
+import androidx.lifecycle.Observer
+import com.example.hackathon.adapter.VoteAddAdapter
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseFragment
 import com.example.hackathon.databinding.FragmentWriteBinding
-import com.example.hackathon.model.TitleData
 import com.example.hackathon.model.VoteList
+import com.example.hackathon.network.RetrofitClient
+import com.example.hackathon.view.activity.MainActivity
 import com.example.hackathon.viewmodel.WriteViewModel
+import com.example.hackathon.widget.extension.startActivity
 import com.example.hackathon.widget.extension.toast
 import kotlinx.android.synthetic.main.fragment_write.*
 
@@ -23,6 +26,7 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
     private lateinit var voteAddAdapter: VoteAddAdapter
 
     override fun init() {
+        viewModel.retrofit = RetrofitClient.getInstance()
         voteAddAdapter = VoteAddAdapter()
         recyclerView.adapter = voteAddAdapter
     }
@@ -35,25 +39,30 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
 
             plusBtn.observe(this@WriteFragment, {
                 plusView()
-
                 voteAddAdapter.setList(subArrayList)
-
                 voteAddAdapter.notifyDataSetChanged()
-
                 Log.d("data1", "data: $subArrayList")
             })
 
             uploadBtn.observe(this@WriteFragment, {
-
+                upload()
             })
 
             arrayList.observe(this@WriteFragment, {
                 subArrayList = arrayList.value!!
             })
 
-            editText.observe(this@WriteFragment, {
-                TitleData.title = editText.value.toString()
+            status.observe(this@WriteFragment, Observer {
+                if(status.value == "200")
+                {
+                    toast("성공")
+                    startActivity(MainActivity::class.java)
+                }
+                else{
+                    toast("실패")
+                }
             })
+
         }
     }
 
