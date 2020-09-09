@@ -1,6 +1,7 @@
 package com.example.hackathon.viewmodel
 
 import android.R
+import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,11 +14,15 @@ class WriteViewModel : BaseViewModel() {
 
     var checkMax = MutableLiveData<Boolean>()
     val plusBtn = SingleLiveEvent<Unit>()
+    val arrayList = MutableLiveData<ArrayList<VoteList>>()
+    private val voteList = ArrayList<String>()
+
+    var i = 0
 
     fun plusView(){
-        var i = 0
-        if(VoteList().voteList.size <= 5){
-            VoteList().voteList[i]
+        if(voteList.size < 5){
+            voteList.add(i, "내용")
+            arrayList.value = arrayListOf(VoteList(voteList))
             i += 1
         }else{
             checkMax.value = false
