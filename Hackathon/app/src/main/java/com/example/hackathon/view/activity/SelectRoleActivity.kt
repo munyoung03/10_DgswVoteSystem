@@ -40,12 +40,12 @@ class SelectRoleActivity : BaseActivity<ActivitySelectRoleBinding, SelectRoleVie
                 {
                     MyApplication.prefs.setIdentity("identity", identity.value)
                     toast("회원가입 성공")
-                    startActivity(MainActivity::class.java)
+                    startActivity(IntroActivity::class.java)
 
                 }
                 else{
-                    toast("로그인 실패")
-                    startActivity(MainActivity::class.java)
+                    toast("회원가입 실패")
+                    startActivity(IntroActivity::class.java)
                 }
             })
         }

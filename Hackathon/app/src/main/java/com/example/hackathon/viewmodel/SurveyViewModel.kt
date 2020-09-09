@@ -2,10 +2,8 @@ package com.example.hackathon.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.hackathon.adapter.MainAdapter
 import com.example.hackathon.base.BaseViewModel
 import com.example.hackathon.model.GetSubJect
-import com.example.hackathon.model.SubJectData
 import com.example.hackathon.network.Service
 import com.example.hackathon.widget.MyApplication
 import retrofit2.Call
