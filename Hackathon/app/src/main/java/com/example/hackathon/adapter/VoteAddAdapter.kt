@@ -35,7 +35,11 @@ class VoteAddAdapter : RecyclerView.Adapter<VoteAddAdapter.Holder>() {
             if(voteList.voteList.size == 0){
                 inputContent.hint ="내용"
             }else{
+<<<<<<< Updated upstream
                 inputContent.hint = voteList.voteList.toString()
+=======
+                inputContent.hint = voteList.voteList[]
+>>>>>>> Stashed changes
             }
         }
     }
