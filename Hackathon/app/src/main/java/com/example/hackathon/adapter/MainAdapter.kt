@@ -1,6 +1,7 @@
 package com.example.hackathon.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class MainAdapter(val subJectList: ArrayList<GetSubJect>) : RecyclerView.Adapter
     }
 
     override fun getItemCount(): Int {
+        Log.d("data3", "data3: ${subJectList.size}")
         return subJectList.size
     }
 
