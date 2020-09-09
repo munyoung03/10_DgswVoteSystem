@@ -5,10 +5,10 @@ import com.example.hackathon.Adapter.VoteAddAdapter
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseFragment
 import com.example.hackathon.databinding.FragmentWriteBinding
+import com.example.hackathon.model.TitleData
 import com.example.hackathon.model.VoteList
 import com.example.hackathon.viewmodel.WriteViewModel
 import com.example.hackathon.widget.extension.toast
-import kotlinx.android.synthetic.main.fragment_survey.*
 import kotlinx.android.synthetic.main.fragment_write.*
 
 class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
@@ -36,15 +36,23 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
             plusBtn.observe(this@WriteFragment, {
                 plusView()
 
-                voteAddAdapter.setList(arrayList.value!!)
+                voteAddAdapter.setList(subArrayList)
 
                 voteAddAdapter.notifyDataSetChanged()
 
                 Log.d("data1", "data: $subArrayList")
             })
 
+            uploadBtn.observe(this@WriteFragment, {
+
+            })
+
             arrayList.observe(this@WriteFragment, {
                 subArrayList = arrayList.value!!
+            })
+
+            editText.observe(this@WriteFragment, {
+                TitleData.title = editText.value.toString()
             })
         }
     }

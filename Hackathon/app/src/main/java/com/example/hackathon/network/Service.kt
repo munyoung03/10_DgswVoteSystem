@@ -23,4 +23,9 @@ interface Service {
     fun getFeed(
         @Header("Authorization") token: String
     ) : Call<List<GetSubJect>>
+
+    @POST("vote/post")
+    fun postVote(
+        @Body postBody: PostBody
+    ): Call<PostData>
 }
