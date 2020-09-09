@@ -20,11 +20,11 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
 
     var subArrayList = ArrayList<VoteList>()
 
-    lateinit var voteAddAdapter: VoteAddAdapter
+    private lateinit var voteAddAdapter: VoteAddAdapter
 
     override fun init() {
         voteAddAdapter = VoteAddAdapter()
-        mRecyclerView.adapter = voteAddAdapter
+        recyclerView.adapter = voteAddAdapter
     }
 
     override fun observerViewModel() {
