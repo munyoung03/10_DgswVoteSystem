@@ -39,7 +39,7 @@ class MainAdapter(val subJectList: ArrayList<GetSubJect>) : RecyclerView.Adapter
                 val position = layoutPosition
 
                 val i = Intent(itemView.context, ContentActivity::class.java)
-                i.putExtra("pk", position+1)
+                i.putExtra("pk", position+11)
 
                 itemView.context.startActivity(i)
             }

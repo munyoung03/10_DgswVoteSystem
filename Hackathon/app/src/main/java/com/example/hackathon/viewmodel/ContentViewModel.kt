@@ -59,6 +59,9 @@ class ContentViewModel : BaseViewModel() {
 
                 status.value = response.code().toString()
 
+                Log.d("LOg", status.value.toString())
+                Log.d("LOG", MyApplication.prefs.getToken("token", "null"))
+
                 Log.d("Log", item1.value.toString())
 
                 end.value = true
