@@ -40,7 +40,7 @@ class ContentViewModel : BaseViewModel() {
 
     fun getDetail(pk : Int){
         myAPI = retrofit.create(Service::class.java)
-        myAPI.getDetail(token = "Token ${MyApplication.prefs.getToken("token", "fuck")}",pk = pk).enqueue(object : Callback<DetailData>{
+        myAPI.getDetail(token = "Token ${MyApplication.prefs.getToken("token", "null")}",pk = pk).enqueue(object : Callback<DetailData>{
             override fun onResponse(call: Call<DetailData>, response: Response<DetailData>) {
                 viewModelPk = pk
                 Log.d("Log", pk.toString())
@@ -77,7 +77,7 @@ class ContentViewModel : BaseViewModel() {
             item3Cnt = item3Cnt.value?.toInt()!!,
             item4Cnt = item4Cnt.value?.toInt()!!,
             item5Cnt = item5Cnt.value?.toInt()!!),
-            token = "Token ${MyApplication.prefs.getToken("token", "fuck")}",
+            token = "Token ${MyApplication.prefs.getToken("token", "null")}",
             pk = viewModelPk).enqueue(object : Callback<DetailData>{
             override fun onResponse(call: Call<DetailData>, response: Response<DetailData>) {
                 Log.d("Log", viewModelPk.toString())

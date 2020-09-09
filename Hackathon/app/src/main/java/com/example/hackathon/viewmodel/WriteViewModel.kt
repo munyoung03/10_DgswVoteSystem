@@ -52,7 +52,7 @@ class WriteViewModel : BaseViewModel() {
                     ContentData.arrayList[2],
                     ContentData.arrayList[3],
                     ContentData.arrayList[4]),
-                token = "Token ${MyApplication.prefs.getToken("token", "fuck")}").enqueue(object : Callback<PostData>{
+                token = "Token ${MyApplication.prefs.getToken("token", "null")}").enqueue(object : Callback<PostData>{
                 override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
                     Log.d("LOG", editText.value.toString())
                     Log.d("Log", ContentData.arrayList[0])
