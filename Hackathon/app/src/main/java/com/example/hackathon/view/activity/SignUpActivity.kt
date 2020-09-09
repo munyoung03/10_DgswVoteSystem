@@ -6,6 +6,7 @@ import com.example.hackathon.base.BaseActivity
 import com.example.hackathon.databinding.ActivitySignupBinding
 import com.example.hackathon.viewmodel.SignUpViewModel
 import com.example.hackathon.widget.extension.noFinishStartActivity
+import com.example.hackathon.widget.extension.startActivity
 import com.example.hackathon.widget.extension.toast
 
 class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(){
@@ -26,7 +27,7 @@ class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(){
             checkNull.observe(this@SignUpActivity, Observer {
                 if (checkNull.value == true) {
                     setData()
-                    noFinishStartActivity(SelectRoleActivity::class.java)
+                    startActivity(SelectRoleActivity::class.java)
                 } else {
                     toast("빈칸을 모두 채워주세요")
                 }

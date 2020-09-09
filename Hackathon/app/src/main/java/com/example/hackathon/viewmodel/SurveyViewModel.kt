@@ -21,7 +21,7 @@ class SurveyViewModel : BaseViewModel() {
 
     fun getFeed(){
         myAPI = retrofit.create(Service::class.java)
-        myAPI.getFeed(token = "Token ${MyApplication.prefs.getToken("token", "fuck")}").enqueue(object :
+        myAPI.getFeed(token = "Token ${MyApplication.prefs.getToken("token", "null")}").enqueue(object :
             Callback<List<GetSubJect>> {
             override fun onResponse(call: Call<List<GetSubJect>>, response: Response<List<GetSubJect>>) {
                 Log.d("LOG", response.code().toString())
