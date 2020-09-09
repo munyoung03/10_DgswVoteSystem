@@ -28,15 +28,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             status.observe(this@LoginActivity, Observer {
                 if(status.value == "200")
                 {
-                    getFeed()
-                }
-                else{
-                    toast("로그인 실패")
-                }
-            })
-
-            loginCheck.observe(this@LoginActivity, Observer {
-                if(loginCheck.value == true){
                     startActivity(MainActivity::class.java)
                 }
                 else{
