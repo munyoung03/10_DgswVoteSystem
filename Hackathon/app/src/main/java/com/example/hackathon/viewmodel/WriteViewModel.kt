@@ -2,11 +2,13 @@ package com.example.hackathon.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.hackathon.adapter.VoteAddAdapter
 import com.example.hackathon.base.BaseViewModel
 import com.example.hackathon.model.*
 import com.example.hackathon.network.Service
 import com.example.hackathon.widget.MyApplication
 import com.example.hackathon.widget.SingleLiveEvent
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,11 +18,9 @@ import java.lang.Exception
 class WriteViewModel : BaseViewModel() {
 
     var checkMax = MutableLiveData<Boolean>()
-    var checkFail = MutableLiveData<Boolean>()
     val plusBtn = SingleLiveEvent<Unit>()
     val uploadBtn = SingleLiveEvent<Unit>()
-    val arrayList = MutableLiveData<ArrayList<VoteList>>()
-    private val voteList = ArrayList<String>()
+    val voteList = MutableLiveData<ArrayList<VoteList>>()
 
     val status = MutableLiveData<String>()
 
@@ -32,10 +32,12 @@ class WriteViewModel : BaseViewModel() {
     var i = 0
 
     fun plusView(){
-        if(voteList.size < 5){
-            voteList.add(i, "내용")
-            arrayList.value = arrayListOf(VoteList(voteList))
-            Log.d("data2", "data: $voteList.size")
+        if(voteList.value == null) {
+            voteList.value = arrayListOf(VoteList("null"),VoteList("null"),VoteList("null"),VoteList("null"),VoteList("null"))
+        }
+        if(i < 5){
+            voteList.value?.set(i, VoteList(""),)
+            Log.d("data2", "data: $i,  Add Data")
             i += 1
         }else{
             checkMax.value = false
@@ -47,15 +49,17 @@ class WriteViewModel : BaseViewModel() {
             myAPI = retrofit.create(Service::class.java)
             myAPI.postVote(
                 postBody = PostBody(editText.value.toString(),
-                    ContentData.arrayList[0],
-                    ContentData.arrayList[1],
-                    ContentData.arrayList[2],
-                    ContentData.arrayList[3],
-                    ContentData.arrayList[4]),
+                    voteList.value!![0].voteList,
+                    voteList.value!![1].voteList,
+                    voteList.value!![2].voteList,
+                    voteList.value!![3].voteList,
+                    voteList.value!![4].voteList),
                 token = "Token ${MyApplication.prefs.getToken("token", "null")}").enqueue(object : Callback<PostData>{
                 override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
+
+                    val gson = Gson()
+                    Log.d("LOG", gson.toJson(call.request().body()))
                     Log.d("LOG", editText.value.toString())
-                    Log.d("Log", ContentData.arrayList[0])
                     status.value = response.code().toString()
                     Log.d("LOG", status.value.toString())
                     Log.d("LOG", response.errorBody()?.string().toString())
@@ -66,8 +70,7 @@ class WriteViewModel : BaseViewModel() {
 
             })
         } catch (e: Exception)  {
-            ContentData.arrayList.add("null")
-
+            e.printStackTrace()
         }
     }
 

@@ -36,10 +36,9 @@ class MainAdapter(val subJectList: ArrayList<GetSubJect>) : RecyclerView.Adapter
             subjectText.text = subject.subject
 
             itemView.setOnClickListener {
-                val position = layoutPosition
 
                 val i = Intent(itemView.context, ContentActivity::class.java)
-                i.putExtra("pk", position+11)
+                i.putExtra("pk", subject.pk)
 
                 itemView.context.startActivity(i)
             }

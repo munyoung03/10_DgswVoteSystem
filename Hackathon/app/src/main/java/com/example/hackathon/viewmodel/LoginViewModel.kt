@@ -39,6 +39,8 @@ class LoginViewModel : BaseViewModel() {
                 override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
                     status.value = response.code().toString()
                     MyApplication.prefs.setToken("token", response.body()?.token.toString())
+                    Log.d("LOG", response.errorBody()?.string().toString())
+                    Log.d("LOG", response.message())
                     Log.d("LOG", response.body()?.token.toString())
                     Log.d("LOG", status.value.toString())
                 }

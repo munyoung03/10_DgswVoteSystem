@@ -6,6 +6,7 @@ import com.example.hackathon.adapter.VoteAddAdapter
 import com.example.hackathon.R
 import com.example.hackathon.base.BaseFragment
 import com.example.hackathon.databinding.FragmentWriteBinding
+import com.example.hackathon.model.ContentData
 import com.example.hackathon.model.VoteList
 import com.example.hackathon.network.RetrofitClient
 import com.example.hackathon.view.activity.MainActivity
@@ -39,17 +40,15 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
 
             plusBtn.observe(this@WriteFragment, {
                 plusView()
-                voteAddAdapter.setList(subArrayList)
                 voteAddAdapter.notifyDataSetChanged()
-                Log.d("data1", "data: $subArrayList")
             })
 
             uploadBtn.observe(this@WriteFragment, {
                 upload()
             })
 
-            arrayList.observe(this@WriteFragment, {
-                subArrayList = arrayList.value!!
+            voteList.observe(this@WriteFragment, Observer {
+                voteAddAdapter.setList(voteList.value!!)
             })
 
             status.observe(this@WriteFragment, Observer {
