@@ -52,7 +52,7 @@ class WriteFragment : BaseFragment<FragmentWriteBinding, WriteViewModel>() {
             })
 
             status.observe(this@WriteFragment, Observer {
-                if(status.value == "200")
+                if(status.value == "200" || status.value == "201")
                 {
                     toast("성공")
                     startActivity(MainActivity::class.java)
